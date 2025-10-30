@@ -49,6 +49,7 @@ struct LessonGroup: Identifiable {
                 Lesson(id: 11, title: "Randomizing Arrays - Part 1 - Randomization Algorithm"),
                 Lesson(id: 12, title: "Randomizing Arrays - Part 2 - Randomize Two-Dimentional Arrays"),
                 Lesson(id: 13, title: "GCD"),
+                Lesson(id: 14, title: "LCM"),
                 
             ])
         ]

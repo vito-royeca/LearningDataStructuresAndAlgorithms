@@ -19,7 +19,10 @@ struct ContentView: View {
                     Section(header: Text(group.description)) {
                         ForEach(group.lessons) { lesson in
                             NavigationLink(lesson.description) {
-                                lessonView(lesson: lesson)
+                                NavigationStack {
+                                    lessonView(lesson: lesson)
+                                        .navigationTitle(lesson.description)
+                                }
                             }
                         }
                     }
@@ -34,16 +37,16 @@ struct ContentView: View {
 #endif
         } detail: {
             Text("Select an item")
+                
         }
     }
     
     func lessonView(lesson: Lesson) -> AnyView {
-        
         switch lesson.id {
-        case 13:
-            AnyView(GCDView())
+        case 13, 14:
+            return AnyView(GCDView())
         default:
-            AnyView(Text(lesson.description))
+            return AnyView(Text("TODO"))
         }
     }
 }
