@@ -36,6 +36,8 @@
 				FactorModel.swift,
 				FactorView.swift,
 				GCDModel.swift,
+				NumericalIntegrationModel.swift,
+				NumericalIntegrationView.swift,
 				PrimesModel.swift,
 			);
 			target = 47D95B2D2EB3D11300847E26 /* LearningDataStructuresAndAlgorithmsTests */;
@@ -46,6 +48,8 @@
 				FactorModel.swift,
 				FactorView.swift,
 				GCDModel.swift,
+				NumericalIntegrationModel.swift,
+				NumericalIntegrationView.swift,
 				PrimesModel.swift,
 			);
 			target = 47D95B372EB3D11300847E26 /* LearningDataStructuresAndAlgorithmsUITests */;

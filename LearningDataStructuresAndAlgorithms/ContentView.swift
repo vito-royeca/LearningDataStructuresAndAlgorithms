@@ -18,11 +18,15 @@ struct ContentView: View {
                 ForEach(lessonGroups) { group in
                     Section(header: Text(group.description)) {
                         ForEach(group.lessons) { lesson in
-                            NavigationLink(lesson.description) {
-                                NavigationStack {
-                                    lessonView(lesson: lesson)
-                                        .navigationTitle(lesson.description)
+                            if lesson.hasView {
+                                NavigationLink(lesson.description) {
+                                    NavigationStack {
+                                        lessonView(lesson: lesson)
+                                            .navigationTitle(lesson.description)
+                                    }
                                 }
+                            } else {
+                                Text(lesson.description)
                             }
                         }
                     }
@@ -48,6 +52,8 @@ struct ContentView: View {
             return AnyView(GCDView())
         case 15, 16:
             return AnyView(FactorView())
+        case 19:
+            return AnyView(NumericalIntegrationView())
         default:
             return AnyView(Text("TODO"))
         }

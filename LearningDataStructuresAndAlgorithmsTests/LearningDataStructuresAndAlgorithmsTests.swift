@@ -53,4 +53,42 @@ struct LearningDataStructuresAndAlgorithmsTests {
         print(primes)
         #expect(primes.count == expectedResult)
     }
+    
+    // Section 3: 18
+    @Test func testNumericalIntegrationByRectangle() {
+        let model = NumericalIntegrationModel()
+        
+        let minX = Double(0)
+        let maxX = Double(5)
+        let numberOfIntervals = 10
+        let expectedResult = NumericalIntegrationResults(
+            estimatedArea: 17.227604741,
+            trueArea: 18.419535764,
+            errorPercentage: -6.471)
+        let result = model.calculateRectangleIntegration(
+            minX: minX,
+            maxX: maxX,
+            intervals: numberOfIntervals)
+        print(result)
+        #expect(result == expectedResult)
+    }
+    
+    // Section 3: 18
+    @Test func testNumericalIntegrationByTrapezoid() {
+        let model = NumericalIntegrationModel()
+        
+        let minX = Double(0)
+        let maxX = Double(5)
+        let numberOfIntervals = 10
+        let expectedResult = NumericalIntegrationResults(
+            estimatedArea: 18.341599463,
+            trueArea: 18.419535764,
+            errorPercentage: -0.423)
+        let result = model.calculateTrapezoidIntegration(
+            minX: minX,
+            maxX: maxX,
+            intervals: numberOfIntervals)
+        print(result)
+        #expect(result == expectedResult)
+    }
 }
