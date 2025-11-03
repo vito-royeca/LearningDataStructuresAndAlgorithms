@@ -29,9 +29,34 @@
 		47D95B382EB3D11300847E26 /* LearningDataStructuresAndAlgorithmsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LearningDataStructuresAndAlgorithmsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		76D8B7A12EB4117400ED5664 /* Exceptions for "LearningDataStructuresAndAlgorithms" folder in "LearningDataStructuresAndAlgorithmsTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				FactorModel.swift,
+				FactorView.swift,
+				GCDModel.swift,
+			);
+			target = 47D95B2D2EB3D11300847E26 /* LearningDataStructuresAndAlgorithmsTests */;
+		};
+		76D8B7A22EB4117400ED5664 /* Exceptions for "LearningDataStructuresAndAlgorithms" folder in "LearningDataStructuresAndAlgorithmsUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				FactorModel.swift,
+				FactorView.swift,
+				GCDModel.swift,
+			);
+			target = 47D95B372EB3D11300847E26 /* LearningDataStructuresAndAlgorithmsUITests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		47D95B212EB3D10E00847E26 /* LearningDataStructuresAndAlgorithms */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				76D8B7A12EB4117400ED5664 /* Exceptions for "LearningDataStructuresAndAlgorithms" folder in "LearningDataStructuresAndAlgorithmsTests" target */,
+				76D8B7A22EB4117400ED5664 /* Exceptions for "LearningDataStructuresAndAlgorithms" folder in "LearningDataStructuresAndAlgorithmsUITests" target */,
+			);
 			path = LearningDataStructuresAndAlgorithms;
 			sourceTree = "<group>";
 		};

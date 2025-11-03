@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import Combine
 
 struct GCDView: View {
-    @State var number1 = 0
-    @State var number2 = 0
-    @State var gcdResult = ""
-    @State var lcmResult = ""
+    @State private var number1 = 0
+    @State private var number2 = 0
+    @State private var gcdResult = ""
+    @State private var lcmResult = ""
+    
+    private var model = GCDModel()
     
     // Create a NumberFormatter for integer input
     let formatter: NumberFormatter = {
@@ -24,53 +27,36 @@ struct GCDView: View {
 
     var body: some View {
         Form {
-            TextField("Number 1", value: $number1, formatter: formatter)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-            TextField("Number 2", value: $number2, formatter: formatter)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-            Button("Calculate") {
-                gcdResult = "\(calculateGCD(number1, number2))"
-                lcmResult = "\(calculateLCM(number1, number2))"
+            Section {
+                TextField("Number 1", value: $number1, formatter: formatter)
+#if os(iOS)
+                    .keyboardType(.numberPad)
+#endif
+                    .multilineTextAlignment(.trailing)
+            
+                TextField("Number 2", value: $number2, formatter: formatter)
+#if os(iOS)
+                    .keyboardType(.numberPad)
+#endif
+                    .multilineTextAlignment(.trailing)
             }
-            Text("GCD: \(gcdResult)")
-            Text("LCM: \(lcmResult)")
-        }
-    }
 
-    // MARK: - Methods
-
-    // Find GCD(a, b).
-    // GCD(a, b) = GCD(b, a mod b).
-    func calculateGCD(_ a: Int, _ b: Int) -> Int {
-        var aCopy = Int(a)
-        var bCopy = Int(b)
-        
-        repeat {
-            // Calculate the remainder.
-            let remainder = aCopy % bCopy
+            Section {
+                Button("Calculate") {
+                    gcdResult = "\(model.calculateGCD(number1, number2))"
+                    lcmResult = "\(model.calculateLCM(number1, number2))"
+                }
+//                .buttonStyle(.borderedProminent)
+                .disabled(number1 == 0 && number2 == 0)
+            }
             
-            // Calculate GCD(b, remainder).
-            aCopy = bCopy
-            bCopy = remainder
-            
-        } while bCopy != 0
-        
-        return aCopy
-    }
-    
-    // Find GCD(a, b) recursively.
-    // GCD(a, b) = GCD(b, a mod b).
-    func calculateRecursiveGcd(_ a: Int, _ b: Int) -> Int {
-        if b == 0 {
-            return a
+            Section {
+                LabeledContent("GCD", value: gcdResult)
+                LabeledContent("LCM", value: lcmResult)
+            } header: {
+                Text("Results")
+            }
         }
-        return calculateRecursiveGcd(b, a % b)
-    }
-    
-    func calculateLCM(_ a: Int, _ b: Int) -> Int {
-        (a / calculateGCD(a, b)) * b
     }
 }
 

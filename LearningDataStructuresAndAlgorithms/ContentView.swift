@@ -39,6 +39,7 @@ struct ContentView: View {
             Text("Select an item")
                 
         }
+        
     }
     
     func lessonView(lesson: Lesson) -> AnyView {
