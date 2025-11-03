@@ -50,6 +50,8 @@ struct LessonGroup: Identifiable {
                 Lesson(id: 12, title: "Randomizing Arrays - Part 2 - Randomize Two-Dimentional Arrays"),
                 Lesson(id: 13, title: "GCD"),
                 Lesson(id: 14, title: "LCM"),
+                Lesson(id: 15, title: "Prime Factorization - Part 1 - Factor"),
+                Lesson(id: 16, title: "Prime Factorization - Part 1 - Factoring Algorithm"),
                 
             ])
         ]

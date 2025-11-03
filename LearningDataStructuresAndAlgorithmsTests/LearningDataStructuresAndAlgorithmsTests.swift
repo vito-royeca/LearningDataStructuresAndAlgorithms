@@ -13,7 +13,7 @@ struct LearningDataStructuresAndAlgorithmsTests {
         // Write your test here and use APIs like `#expect(...)` to check expected conditions.
     }
     
-    // Section 3, 13
+    // Section 3: 13
     @Test func testGCD() {
         let model = GCDModel()
         
@@ -24,7 +24,7 @@ struct LearningDataStructuresAndAlgorithmsTests {
         #expect(model.calculateRecursiveGCD(numberA, numberB) == expectedResult)
     }
     
-    // Section 3, 14
+    // Section 3: 14
     @Test func testLCM() {
         let model = GCDModel()
         
@@ -32,6 +32,15 @@ struct LearningDataStructuresAndAlgorithmsTests {
         let numberB = 15
         let expectedResult = 60
         #expect(model.calculateLCM(numberA, numberB) == expectedResult)
+    }
+    
+    // Section 3: 15,16
+    @Test func testFactor() {
+        let model = FactorModel()
+        
+        let number = 204
+        let expectedResult = [2,2,3,17]
+        #expect(model.calculateFactor(number) == expectedResult)
     }
 
 }

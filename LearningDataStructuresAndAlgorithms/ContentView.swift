@@ -46,6 +46,8 @@ struct ContentView: View {
         switch lesson.id {
         case 13, 14:
             return AnyView(GCDView())
+        case 15, 16:
+            return AnyView(FactorView())
         default:
             return AnyView(Text("TODO"))
         }
