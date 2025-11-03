@@ -15,8 +15,8 @@ struct ContentView: View {
     var body: some View {
         NavigationSplitView {
             List {
-                ForEach(lessonGroups) { group in
-                    Section(header: Text(group.description)) {
+                ForEach($lessonGroups) { $group in
+                    Section(isExpanded: $group.isExpanded) {
                         ForEach(group.lessons) { lesson in
                             if lesson.hasView {
                                 NavigationLink(lesson.description) {
@@ -29,16 +29,16 @@ struct ContentView: View {
                                 Text(lesson.description)
                             }
                         }
+                    } header: {
+                        Text(group.description)
                     }
                 }
             }
-#if os(iOS) || os(tvOS)
-            .listStyle(.grouped)
-#endif
 #if os(macOS)
             
             .navigationSplitViewColumnWidth(min: 180, ideal: 200)
 #endif
+            .navigationTitle("Learning Data Structures and Algorithms")
         } detail: {
             Text("Select an item")
                 
@@ -58,8 +58,11 @@ struct ContentView: View {
             return AnyView(Text("TODO"))
         }
     }
+    
+    
 }
 
 #Preview {
     ContentView()
 }
+

@@ -22,7 +22,8 @@ struct Lesson: Identifiable {
 struct LessonGroup: Identifiable {
     let id: Int
     let title: String
-    let lessons: [Lesson]
+    var isExpanded: Bool
+    var lessons: [Lesson]
     
     var description: String {
         get {
@@ -32,19 +33,19 @@ struct LessonGroup: Identifiable {
     
     static func create() -> [LessonGroup] {
         [
-            LessonGroup(id: 1, title: "Introduction", lessons: [
+            LessonGroup(id: 1, title: "Introduction", isExpanded: false, lessons: [
                 Lesson(id: 1, title: "Important - Download These First - Working Files", hasView: false),
                 Lesson(id: 2, title: "Introduction and Course Overview", hasView: false),
                 Lesson(id: 3, title: "How to access Your Working Files", hasView: false),
             ]),
-            LessonGroup(id: 2, title: "Complexity Theory", lessons: [
+            LessonGroup(id: 2, title: "Complexity Theory", isExpanded: false, lessons: [
                 Lesson(id: 4, title: "Complexity Theory", hasView: false),
                 Lesson(id: 5, title: "Big O Notation", hasView: false),
                 Lesson(id: 6, title: "Typical Runtime Functions", hasView: false),
                 Lesson(id: 7, title: "Comparing Runtime Functions", hasView: false),
                 Lesson(id: 8, title: "P and NP", hasView: false),
             ]),
-            LessonGroup(id: 3, title: "Numerical Algorithms", lessons: [
+            LessonGroup(id: 3, title: "Numerical Algorithms", isExpanded: false, lessons: [
                 Lesson(id: 9, title: "Random Numbers", hasView: false),
                 Lesson(id: 10, title: "Linear Congruential Generators", hasView: false),
                 Lesson(id: 11, title: "Randomizing Arrays - Part 1 - Randomization Algorithm", hasView: false),
