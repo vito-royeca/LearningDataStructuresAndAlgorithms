@@ -43,4 +43,14 @@ struct LearningDataStructuresAndAlgorithmsTests {
         #expect(model.calculateFactor(number) == expectedResult)
     }
 
+    // Section 3: 17
+    @Test func testPrimes() {
+        let model = PrimesModel()
+        
+        let number = 10000
+        let expectedResult = 1229
+        let primes = model.findPrimes(upTo: number)
+        print(primes)
+        #expect(primes.count == expectedResult)
+    }
 }
