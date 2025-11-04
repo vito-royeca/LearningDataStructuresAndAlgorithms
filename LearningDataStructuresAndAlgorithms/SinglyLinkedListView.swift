@@ -17,11 +17,6 @@ struct SinglyLinkedListView: View {
                     NodeView(node: node)
                         .environmentObject(model)
                 }
-                .frame(
-                    width: 60,
-//                    height: CGFloat((model.count + 2) * 60),
-                    alignment: .center
-                )
                 Text("Count: \(model.count)")
             }
         } else {
@@ -76,7 +71,15 @@ struct NodeContentView: View {
                 height: 100,
                 alignment: .center
             )
-            addToBottomButton
+            if node.value == model.getLastValue() {
+                addToBottomButton
+            } else {
+                Image(systemName: "link")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 30, height: 30)
+                    .tint(.pink)
+            }
         }
     }
     
@@ -119,7 +122,7 @@ struct NodeContentView: View {
 
 #Preview {
     let model = LinkedListModel()
-//    model.createSampleData()
+    model.createSampleData()
 
     return SinglyLinkedListView(model: model)
 //        .environmentObject(model)

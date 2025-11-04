@@ -12,10 +12,14 @@ class LinkedListModel: ObservableObject {
     @Published var node: Node<String>?
     @Published var count = 0
     
-    @Published var linkedList = LinkedList<String>()
+    private var linkedList = LinkedList<String>()
     
     // MARK: - Utility methods
     
+    func getLastValue() -> String? {
+        linkedList.getLast()
+    }
+
     func append(at position: Int) {
         linkedList.insert(randomHexNumber(), at: position)
         node = linkedList.head
