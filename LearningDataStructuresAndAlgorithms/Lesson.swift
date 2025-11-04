@@ -57,7 +57,10 @@ struct LessonGroup: Identifiable {
                 Lesson(id: 17, title: "Finding Primes", hasView: false),
                 Lesson(id: 18, title: "Testing Primality", hasView: false),
                 Lesson(id: 19, title: "Numerical Integration", hasView: true),
-            ])
+            ]),
+            LessonGroup(id: 4, title: "Linked Lists", isExpanded: false, lessons: [
+                Lesson(id: 20, title: "Singly Linked Lists - Part 1 - Explanation", hasView: true),
+            ]),
         ]
     }
 }

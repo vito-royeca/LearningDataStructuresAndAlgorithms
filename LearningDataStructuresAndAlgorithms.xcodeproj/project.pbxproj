@@ -33,24 +33,32 @@
 		76D8B7A12EB4117400ED5664 /* Exceptions for "LearningDataStructuresAndAlgorithms" folder in "LearningDataStructuresAndAlgorithmsTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				"Color+utilities.swift",
 				FactorModel.swift,
 				FactorView.swift,
 				GCDModel.swift,
+				LinkedList.swift,
+				LinkedListModel.swift,
 				NumericalIntegrationModel.swift,
 				NumericalIntegrationView.swift,
 				PrimesModel.swift,
+				SinglyLinkedListView.swift,
 			);
 			target = 47D95B2D2EB3D11300847E26 /* LearningDataStructuresAndAlgorithmsTests */;
 		};
 		76D8B7A22EB4117400ED5664 /* Exceptions for "LearningDataStructuresAndAlgorithms" folder in "LearningDataStructuresAndAlgorithmsUITests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				"Color+utilities.swift",
 				FactorModel.swift,
 				FactorView.swift,
 				GCDModel.swift,
+				LinkedList.swift,
+				LinkedListModel.swift,
 				NumericalIntegrationModel.swift,
 				NumericalIntegrationView.swift,
 				PrimesModel.swift,
+				SinglyLinkedListView.swift,
 			);
 			target = 47D95B372EB3D11300847E26 /* LearningDataStructuresAndAlgorithmsUITests */;
 		};

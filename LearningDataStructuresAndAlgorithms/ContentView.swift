@@ -49,13 +49,15 @@ struct ContentView: View {
     func lessonView(lesson: Lesson) -> AnyView {
         switch lesson.id {
         case 13, 14:
-            return AnyView(GCDView())
+            AnyView(GCDView())
         case 15, 16:
-            return AnyView(FactorView())
+            AnyView(FactorView())
         case 19:
-            return AnyView(NumericalIntegrationView())
+            AnyView(NumericalIntegrationView())
+        case 20:
+            AnyView(SinglyLinkedListView(model: LinkedListModel()))
         default:
-            return AnyView(Text("TODO"))
+            AnyView(Text("TODO"))
         }
     }
     

@@ -12,7 +12,8 @@ import SwiftData
 struct LearningDataStructuresAndAlgorithmsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+            SinglyLinkedListView(model: LinkedListModel())
         }
     }
 }
