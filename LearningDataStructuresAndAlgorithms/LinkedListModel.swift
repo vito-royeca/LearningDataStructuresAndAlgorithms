@@ -16,10 +16,6 @@ class LinkedListModel<T: Equatable>: ObservableObject {
     
     // MARK: - Utility methods
     
-    func getLastValue() -> T? {
-        linkedList.getLast()
-    }
-
     func append(at position: Int) {
         linkedList.insert(randomHexNumber() as! T, at: position)
         node = linkedList.head
@@ -59,7 +55,7 @@ class LinkedListModel<T: Equatable>: ObservableObject {
     func createSampleData() {
         linkedList.clear()
         
-        for i in 0..<10 {
+        for i in 0..<5 {
             linkedList.insert(randomHexNumber() as! T, at: i)
         }
         

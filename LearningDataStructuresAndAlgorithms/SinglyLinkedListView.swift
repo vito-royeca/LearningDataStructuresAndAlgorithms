@@ -14,7 +14,7 @@ struct SinglyLinkedListView: View {
         if let node = model.node {
             VStack {
                 ScrollView(.vertical) {
-                    NodeView(node: node)
+                    NodeView(node: node, index: 0)
                         .environmentObject(model)
                 }
                 Text("Count: \(model.count)")
@@ -40,13 +40,14 @@ struct SinglyLinkedListView: View {
 struct NodeView: View {
     @EnvironmentObject var model: LinkedListModel<String>
     var node: Node<String>
+    var index: Int
 
     var body: some View {
         VStack {
-            NodeContentView(node: node)
+            NodeContentView(node: node, index: index)
 
             if let nextNode = node.next {
-                NodeView(node: nextNode) // Recursion!
+                NodeView(node: nextNode, index: index + 1) // Recursion!
             }
         }
     }
@@ -55,49 +56,62 @@ struct NodeView: View {
 struct NodeContentView: View {
     @EnvironmentObject var model: LinkedListModel<String>
     var node: Node<String>
+    var index: Int
 
     var body: some View {
         VStack {
-            if node.value == model.node?.value {
-                addToTopButton
+            if index == 0 {
+                addHeadButton
+            } else {
+                addToPositionButton
             }
             ZStack {
                 Circle()
                     .fill(Color(hex: node.value))
-                deleteButton
+                VStack {
+                    Text("\(index)")
+                        .foregroundStyle(.white)
+                    deleteButton
+                }
             }
             .frame(
                 width: 100,
                 height: 100,
                 alignment: .center
             )
-            if node.value == model.getLastValue() {
-                addToBottomButton
-            } else {
-                Image(systemName: "link")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 30, height: 30)
-                    .tint(.pink)
+            if node.next == nil {
+                addTailButton
             }
         }
     }
     
-    var addToTopButton: some View {
+    var addHeadButton: some View {
         Button(action: {
             model.append(at: 0)
         }, label: {
-            Image(systemName: "link.badge.plus")
+            Image(systemName: "plus")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 30, height: 30)
                 .tint(.pink)
         })
     }
-    
-    var addToBottomButton: some View {
+
+    var addTailButton: some View {
         Button(action: {
-            model.appendAtTail()
+            model.append(at: index + 1)
+        }, label: {
+            Image(systemName: "plus")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 30, height: 30)
+                .tint(.pink)
+        })
+    }
+
+    var addToPositionButton: some View {
+        Button(action: {
+            model.append(at: index)
         }, label: {
             Image(systemName: "link.badge.plus")
                 .resizable()
@@ -109,7 +123,8 @@ struct NodeContentView: View {
     
     var deleteButton: some View {
         Button(action: {
-            model.delete(node: node)
+//            model.delete(node: node)
+            model.delete(at: index)
         }, label: {
             Image(systemName: "trash")
                 .resizable()
@@ -125,5 +140,4 @@ struct NodeContentView: View {
     model.createSampleData()
 
     return SinglyLinkedListView(model: model)
-//        .environmentObject(model)
 }
