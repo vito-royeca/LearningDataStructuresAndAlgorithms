@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SinglyLinkedListView: View {
-    @ObservedObject var model: LinkedListModel
+    @ObservedObject var model: LinkedListModel<String>
     
     var body: some View {
         if let node = model.node {
@@ -38,7 +38,7 @@ struct SinglyLinkedListView: View {
 }
 
 struct NodeView: View {
-    @EnvironmentObject var model: LinkedListModel
+    @EnvironmentObject var model: LinkedListModel<String>
     var node: Node<String>
 
     var body: some View {
@@ -53,7 +53,7 @@ struct NodeView: View {
 }
 
 struct NodeContentView: View {
-    @EnvironmentObject var model: LinkedListModel
+    @EnvironmentObject var model: LinkedListModel<String>
     var node: Node<String>
 
     var body: some View {
@@ -109,7 +109,7 @@ struct NodeContentView: View {
     
     var deleteButton: some View {
         Button(action: {
-            model.delete(value: node.value)
+            model.delete(node: node)
         }, label: {
             Image(systemName: "trash")
                 .resizable()
@@ -121,7 +121,7 @@ struct NodeContentView: View {
 }
 
 #Preview {
-    let model = LinkedListModel()
+    let model = LinkedListModel<String>()
     model.createSampleData()
 
     return SinglyLinkedListView(model: model)

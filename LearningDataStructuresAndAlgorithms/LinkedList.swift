@@ -119,24 +119,30 @@ class LinkedList<T: Equatable> {
             currentIndex += 1
         }
 
-        guard let nodeBefore = current, nodeBefore.next != nil else { return }
+        guard let nodeBefore = current,
+              nodeBefore.next != nil else { return }
 
         nodeBefore.next = nodeBefore.next?.next
         count -= 1
     }
 
-    func delete(value: T) {
+    func delete(node: Node<T>) {
         guard head != nil else { return }
 
         var current = head
+        var previous: Node<T>?
 
-        while current != nil && current?.value != value {
+        if current?.value == node.value {
+            deleteHead()
+            return
+        }
+
+        while current != nil && current?.value != node.value {
+            previous = current
             current = current?.next
         }
-        print("Bingo: \(current?.value as? String ?? "") = \(value)")
-        guard let nodeBefore = current, nodeBefore.next != nil else { return }
 
-        nodeBefore.next = nodeBefore.next?.next
+        previous?.next = current?.next
         count -= 1
     }
     

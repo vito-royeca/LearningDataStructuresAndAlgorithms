@@ -8,26 +8,26 @@
 import Foundation
 import Combine
 
-class LinkedListModel: ObservableObject {
-    @Published var node: Node<String>?
+class LinkedListModel<T: Equatable>: ObservableObject {
+    @Published var node: Node<T>?
     @Published var count = 0
     
-    private var linkedList = LinkedList<String>()
+    private var linkedList = LinkedList<T>()
     
     // MARK: - Utility methods
     
-    func getLastValue() -> String? {
+    func getLastValue() -> T? {
         linkedList.getLast()
     }
 
     func append(at position: Int) {
-        linkedList.insert(randomHexNumber(), at: position)
+        linkedList.insert(randomHexNumber() as! T, at: position)
         node = linkedList.head
         count = linkedList.count
     }
     
     func appendAtTail() {
-        linkedList.addTail(randomHexNumber())
+        linkedList.addTail(randomHexNumber() as! T)
         
         node = linkedList.head
         count = linkedList.count
@@ -40,15 +40,15 @@ class LinkedListModel: ObservableObject {
         count = linkedList.count
     }
     
-    func delete(value: String) {
-        linkedList.delete(value: value)
+    func delete(node: Node<T>) {
+        linkedList.delete(node: node)
         
-        node = linkedList.head
+        self.node = linkedList.head
         count = linkedList.count
     }
     
     func create() {
-        linkedList.addHead(randomHexNumber())
+        linkedList.addHead(randomHexNumber() as! T)
         
         node = linkedList.head
         count = linkedList.count
@@ -60,7 +60,7 @@ class LinkedListModel: ObservableObject {
         linkedList.clear()
         
         for i in 0..<10 {
-            linkedList.insert(randomHexNumber(), at: i)
+            linkedList.insert(randomHexNumber() as! T, at: i)
         }
         
         node = linkedList.head
